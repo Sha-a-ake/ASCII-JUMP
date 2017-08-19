@@ -1,6 +1,14 @@
 #include <stdio.h>
+#include <curses.h>
 
-void render_all()
+bool render_all(int i, int y)
 {
-    puts("Rendering everything!");
+    int ch;
+
+    if ((ch = getch()) != ERR)
+        return false;
+    else
+        printw("%d", i);
+    move(y, 0);
+    return true;
 }

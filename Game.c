@@ -7,22 +7,13 @@
 int game_cycle()
 {
     int ch;
+    bool game_on = true;
     int i = 0, y = 0;
 
-    initscr();
-    cbreak();
-    noecho();
-    keypad(stdscr, TRUE);
-    nodelay(stdscr, TRUE);
 
-    while (++i)
+    while (game_on)
     {
-        //render_all();
-        if ((ch = getch()) != ERR)
-            break;
-        else
-            printw("%d", i);
-        move(y++, 0);
+        game_on = render_all(i++, y++);
 
         if (y == 39)
             y = 0;
@@ -34,6 +25,12 @@ int game_cycle()
 int main()
 {
     printf("Hello world!\n");
+
+    initscr();
+    cbreak();
+    noecho();
+    keypad(stdscr, TRUE);
+    nodelay(stdscr, TRUE);
 
     game_cycle();
 
