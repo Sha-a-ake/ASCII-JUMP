@@ -7,7 +7,7 @@
 int game_cycle()
 {
     int ch;
-    int i = 0;
+    int i = 0, y = 0;
 
     initscr();
     cbreak();
@@ -22,7 +22,10 @@ int game_cycle()
             break;
         else
             printw("%d", i);
-        move(0, 0);
+        move(y++, 0);
+
+        if (y == 39)
+            y = 0;
     }
 
     return 0;
