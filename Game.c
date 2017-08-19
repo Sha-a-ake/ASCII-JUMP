@@ -1,11 +1,15 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include "Rendering.h"
 
 int game_cycle()
 {
-    while (true)
+    bool game_on = true;
+
+    while (game_on)
     {
-        break;
+        render_all();
+        game_on = false;
     }
 
     return 0;
@@ -13,7 +17,7 @@ int game_cycle()
 
 int main()
 {
-    printf("Hello world!");
+    printf("Hello world!\n");
 
     game_cycle();
 
