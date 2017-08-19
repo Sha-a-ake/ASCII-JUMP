@@ -1,4 +1,4 @@
-CFLAGS := -std=c99 -Wall -Werror
+CFLAGS := -std=c99 -Wall -Werror -lncurses
 
 CFILES := $(wildcard *.c)
 OBJECTS := $(CFILES:%.c=%.o)
