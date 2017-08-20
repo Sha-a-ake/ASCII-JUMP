@@ -2,9 +2,25 @@
 #include "Player.h"
 #include "stdbool.h"
 
-bool player_collision(platform plat, player play)
+int plnkls(platform plnk)
 {
-    if ((plat.y == play.y) && (play.x >= plat.x) && (play.x <= plat.x + PLATFORM_WIDTH))
+    return plnk.x;
+}
+
+int plnkrs(platform plnk)
+{
+    return plnk.x + PLATFORM_WIDTH - 1;
+}
+
+int plnkh(platform plnk)
+{
+    return plnk.y;
+}
+
+
+bool plnkcln(platform plnk, player plyr)
+{
+    if ((plnkh(plnk) == plyrbh(plyr)) && (plnkls(plnk) <= plyrrs(plyr)) && (plnkrs(plnk) >= plyrls(plyr)))
         return true;
     else
         return false;
