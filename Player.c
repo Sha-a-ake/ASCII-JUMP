@@ -1,11 +1,17 @@
+
+#include <math.h>
+
 #include "Player.h"
 
-player new_player(int x, int y)
+player new_player(float x, float y)
 {
     player plyr;
 
-    plyr.x = x;
-    plyr.y = y;
+    plyr.x_real = x;
+    plyr.y_real= y;
+
+    plyr.x = trunc(x);
+    plyr.y = trunc(y);
 
     return plyr;
 }

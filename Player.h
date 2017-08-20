@@ -1,8 +1,13 @@
 #ifndef __PLAYER__
 #define __PLAYER__
 
-#define PLAYER_HEIGHT 4
+#define PLAYER_HEIGHT 3
 #define PLAYER_WIDTH 3
+
+#define PLAYER1  " 0 "
+#define PLAYER2 "\\|/"
+#define PLAYER3  "/|\\"
+
 
 typedef struct p
 {
@@ -13,7 +18,7 @@ typedef struct p
 } player;
 
 // Create new player
-player new_player(int x, int y);
+player new_player(float x, float y);
 
 // Player left side
 int plyrls(player plyr);

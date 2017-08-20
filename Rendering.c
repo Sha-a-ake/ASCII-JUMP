@@ -9,16 +9,19 @@
 bool render_all(int i, int y)
 {
     int ch;
+
     platform my_plat = new_platform(3, 4);
+    player my_plyr = new_player(7, 7);
 
     render_static();
+    render_platform(my_plat);
 
     move(0, 0);
 
     if ((ch = getch()) != ERR)
         return false;
     else
-        render_platform(my_plat);
+        render_player(my_plyr);
     return true;
 }
 
@@ -52,3 +55,15 @@ void render_platform(platform p)
     for (int i = 0; i < PLATFORM_WIDTH; i++)
         addch('-');
 }
+
+void render_player(player p)
+{
+   move(plyrth(p) + WINDOW_Y, plyrls(p) + WINDOW_X);
+   printw(PLAYER1);
+   move(plyrth(p) + 1 + WINDOW_Y, plyrls(p) + WINDOW_X);
+   printw(PLAYER2);
+   move(plyrth(p) + 2 + WINDOW_Y, plyrls(p) + WINDOW_X);
+   printw(PLAYER3);
+
+}
+
