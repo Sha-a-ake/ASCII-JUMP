@@ -3,13 +3,13 @@
 #include <curses.h>
 
 #include "Rendering.h"
+#include "Platform.h"
 
 int game_cycle()
 {
     int ch;
     bool game_on = true;
     int i = 0, y = 0;
-
 
     while (game_on)
     {
