@@ -12,6 +12,9 @@
 *.map
 *.exp
 
+# Muh vim swap
+*.swp
+
 # Precompiled Headers
 *.gch
 *.pch
