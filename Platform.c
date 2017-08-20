@@ -2,6 +2,16 @@
 #include "Player.h"
 #include "stdbool.h"
 
+platform new_platform(int x, int y)
+{
+    platform plnk;
+    
+    plnk.x = x;
+    plnk.y = y;
+
+    return plnk;
+}
+
 int plnkls(platform plnk)
 {
     return plnk.x;

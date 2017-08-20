@@ -12,6 +12,9 @@ typedef struct p
     float y_real;
 } player;
 
+// Create new player
+player new_player(int x, int y);
+
 // Player left side
 int plyrls(player plyr);
 // Player right side

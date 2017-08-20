@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <curses.h>
+#include <time.h>
 
 #include "Rendering.h"
 #include "Platform.h"
@@ -17,6 +18,7 @@ int game_cycle()
 
         if (y == 39)
             y = 0;
+        time(0);
     }
 
     return 0;

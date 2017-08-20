@@ -14,6 +14,9 @@ typedef union a
 } platform;
 
 
+platform new_platform(int x, int y);
+
+
 // Platform left side
 int plnkls(platform plnk);
 
