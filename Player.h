@@ -29,4 +29,6 @@ int plyrth(player plyr);
 // Player bottom height
 int plyrbh(player plyr);
 
+player plyrmv(player p, float dx, float dy);
+
 #endif

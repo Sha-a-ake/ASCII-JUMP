@@ -35,3 +35,10 @@ int plyrbh(player plyr)
 {
     return plyr.y + PLAYER_HEIGHT - 1;
 }
+
+player plyrmv(player p, float dx, float dy)
+{
+    player new_plyr = new_player(p.x_real + dx, p.y_real + dy);
+
+    return new_plyr;
+}
