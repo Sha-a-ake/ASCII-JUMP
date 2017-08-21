@@ -62,8 +62,12 @@ void render_platform(platform p)
 {
     move(plnkh(p) + WINDOW_Y, plnkls(p) + WINDOW_X);
 
+    addch('<');
+
     for (int i = 0; i < PLATFORM_WIDTH; i++)
-        addch('-');
+        addch('=');
+
+    addch('>');
 }
 
 void render_player(player p)

@@ -2,6 +2,7 @@
 #include <math.h>
 
 #include "Player.h"
+#include "Rendering.h"
 
 player new_player(float x, float y, float Vy)
 {
@@ -54,7 +55,7 @@ player plyrfall(player p)
 {
     player new_plyr = new_player(p.x_real, p.y_real - p.Vy, p.Vy - GRAVITATION);
 
-    if (p.y >= 16) 
+    if (p.y >= WINDOW_HEIGHT-4) 
         new_plyr.Vy = 1;
 
     return new_plyr;

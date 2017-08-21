@@ -3,8 +3,8 @@
 
 #define WINDOW_X 3
 #define WINDOW_Y 3
-#define WINDOW_HEIGHT 20
-#define WINDOW_WIDTH 30
+#define WINDOW_HEIGHT 45
+#define WINDOW_WIDTH 65
 
 #include "Platform.h"
 

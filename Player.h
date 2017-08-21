@@ -6,8 +6,8 @@
 
 // Chainging height may require editing player rendering function
 #define PLAYER1  " o "
-#define PLAYER2  "/O\\"
-#define PLAYER3  "_|_"
+#define PLAYER2  " | "
+#define PLAYER3  "0x0"
 
 #define GRAVITATION 0.1
 
