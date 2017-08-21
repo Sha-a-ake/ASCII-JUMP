@@ -14,11 +14,7 @@ int game_cycle()
 
     while (game_on)
     {
-        game_on = render_all(i++, y++);
-
-        if (y == 39)
-            y = 0;
-        time(0);
+        game_on = render_all(i, y);
     }
 
     return 0;

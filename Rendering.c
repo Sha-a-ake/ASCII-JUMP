@@ -2,6 +2,7 @@
 #include <curses.h>
 
 #include "Rendering.h"
+#include "Generating.h"
 #include "Platform.h"
 #include "Player.h"
 
@@ -10,11 +11,17 @@ bool render_all(int i, int y)
 {
     int ch;
 
-    platform my_plat = new_platform(3, 4);
+    platform my_chunk[3];
+    gen_chunk(my_chunk);
+
     player my_plyr = new_player(7, 7);
 
     render_static();
-    render_platform(my_plat);
+
+    for (int i = 0; i < 3; ++i)
+    {
+        render_platform(my_chunk[i]);
+    }
 
     move(0, 0);
 
