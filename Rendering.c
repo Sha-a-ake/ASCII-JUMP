@@ -7,7 +7,7 @@
 #include "Player.h"
 
 
-bool render_all(platform* chunk, player* p)
+void render_all(platform* chunk, player* p)
 {
     int ch;
 
@@ -21,12 +21,6 @@ bool render_all(platform* chunk, player* p)
     render_player(*p);
 
     move(0, 0);
-
-    if ((ch = getch()) != ERR)
-        return false;
-    else
-        render_player(*p);
-    return true;
 }
 
 void render_static()

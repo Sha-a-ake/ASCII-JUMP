@@ -8,7 +8,7 @@
 
 #include "Platform.h"
 
-bool render_all(platform* chunk, player* p);
+void render_all(platform* chunk, player* p);
 void render_static();
 void clear_screen();
 void render_platform(platform p);

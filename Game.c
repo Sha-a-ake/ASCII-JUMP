@@ -24,11 +24,20 @@ int game_cycle()
 
     while (game_on)
     {
-        my_plyr = plyrmv(my_plyr, 1, 0);
 
-        game_on = render_all(my_chunk, &my_plyr);
+        render_all(my_chunk, &my_plyr);
 
-        sleep(1);
+    if ((ch = getch()) != ERR)
+    {
+        if (ch == KEY_BREAK)
+            break;
+        else if (ch == KEY_RIGHT)
+            my_plyr = plyrmv(my_plyr, 1, 0);
+        else if (ch == KEY_LEFT)
+            my_plyr = plyrmv(my_plyr, -1, 0);
+    }
+
+
     }
 
     return 0;
