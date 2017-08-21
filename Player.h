@@ -5,9 +5,9 @@
 #define PLAYER_WIDTH 3
 
 // Chainging height may require editing player rendering function
-#define PLAYER1  " 0 "
-#define PLAYER2 "\\|/"
-#define PLAYER3  "/|\\"
+#define PLAYER1  " o "
+#define PLAYER2  "/O\\"
+#define PLAYER3  "_|_"
 
 
 typedef struct p
@@ -16,6 +16,9 @@ typedef struct p
     float x_real;
     int   y;
     float y_real;
+
+    float Vy = 0;
+
 } player;
 
 // Create new player
@@ -29,6 +32,8 @@ int plyrrs(player plyr);
 int plyrth(player plyr);
 // Player bottom height
 int plyrbh(player plyr);
+// Player y speed
+int plyrvy(player plyr);
 
 player plyrmv(player p, float dx, float dy);
 

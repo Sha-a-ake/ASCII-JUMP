@@ -11,13 +11,14 @@ bool render_all(platform* chunk, player* p)
 {
     int ch;
 
-    //clear_screen();
-    render_static();
+    clear_screen();
 
     for (int i = 0; i < 3; ++i)
     {
         render_platform(chunk[i]);
     }
+
+    render_player(*p);
 
     move(0, 0);
 
@@ -53,11 +54,11 @@ void render_static()
 
 void clear_screen()
 {
-    for (int i = 1; i <= WINDOW_HEIGHT; i++)
+    for (int i = 1; i <= WINDOW_HEIGHT - 1; i++)
     {
         move(WINDOW_Y + i, WINDOW_X + 1);
-        for (int j = 0; j < WINDOW_WIDTH; i++)
-            addch(' ');
+        for (int j = 0; j <= WINDOW_WIDTH - 3; j++)
+	addch(' ');
     }
 
 }
