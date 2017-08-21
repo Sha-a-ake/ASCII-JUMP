@@ -4,6 +4,7 @@
 #include <curses.h>
 #include <time.h>
 #include <unistd.h>
+#include <termios.h>
 
 #include "Rendering.h"
 #include "Generating.h"
@@ -33,7 +34,7 @@ int game_cycle()
 
         render_all(my_chunk, &my_plyr);
 
-        ch = wgetch(stdscr);
+        ch = getch();
 
         if (ch != ERR)
         {
@@ -47,6 +48,7 @@ int game_cycle()
         }
 
         my_plyr = plyrfall(my_plyr);
+        tcflush(0, TCIFLUSH);
         usleep(50000);
 
     }
