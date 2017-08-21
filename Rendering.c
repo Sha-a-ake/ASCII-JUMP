@@ -7,12 +7,9 @@
 #include "Player.h"
 
 
-bool render_all(int i, int y)
+bool render_all(platform* chunk)
 {
     int ch;
-
-    platform my_chunk[3];
-    gen_chunk(my_chunk);
 
     player my_plyr = new_player(7, 7);
 
@@ -20,7 +17,7 @@ bool render_all(int i, int y)
 
     for (int i = 0; i < 3; ++i)
     {
-        render_platform(my_chunk[i]);
+        render_platform(chunk[i]);
     }
 
     move(0, 0);

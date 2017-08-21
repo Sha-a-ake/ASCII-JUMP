@@ -8,10 +8,7 @@
 
 int random_int(const int min, const int max)
 {
-    srand(time(NULL));
-    int r = rand() % max + min;
-    return r;
-
+    return rand() % max + min;
 }
 
 void gen_chunk(platform* chunk)
@@ -19,7 +16,7 @@ void gen_chunk(platform* chunk)
 
     for (int i = 0; i < 3; ++i)
     {
-        chunk[i] = new_platform(random_int(1, WINDOW_WIDTH), random_int(1, WINDOW_HEIGHT));
+        chunk[i] = new_platform(random_int(0, WINDOW_WIDTH), random_int(0, WINDOW_HEIGHT));
     }
 
 }
