@@ -7,7 +7,7 @@
 
 #define PLATFORM_WIDTH 5
 
-typedef union a
+typedef struct a
 {
     int x;
     int y;
