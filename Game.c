@@ -3,6 +3,7 @@
 #include <stdbool.h>
 #include <curses.h>
 #include <time.h>
+#include <unistd.h>
 
 #include "Rendering.h"
 #include "Generating.h"
@@ -15,11 +16,19 @@ int game_cycle()
     int i = 0, y = 0;
 
     platform my_chunk[3];
+    player my_plyr = new_player(7, 7);
+
     gen_chunk(my_chunk);
+
+    render_static();
 
     while (game_on)
     {
-        game_on = render_all(my_chunk);
+        my_plyr = plyrmv(my_plyr, 1, 0);
+
+        game_on = render_all(my_chunk, &my_plyr);
+
+        sleep(1);
     }
 
     return 0;
@@ -27,9 +36,8 @@ int game_cycle()
 
 int main()
 {
-    printf("Hello world!\n");
 
-	srand(time(NULL));
+    srand(time(NULL));
     initscr();
     cbreak();
     noecho();

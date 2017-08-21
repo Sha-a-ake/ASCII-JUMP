@@ -7,12 +7,11 @@
 #include "Player.h"
 
 
-bool render_all(platform* chunk)
+bool render_all(platform* chunk, player* p)
 {
     int ch;
 
-    player my_plyr = new_player(7, 7);
-
+    //clear_screen();
     render_static();
 
     for (int i = 0; i < 3; ++i)
@@ -25,7 +24,7 @@ bool render_all(platform* chunk)
     if ((ch = getch()) != ERR)
         return false;
     else
-        render_player(my_plyr);
+        render_player(*p);
     return true;
 }
 
@@ -49,6 +48,17 @@ void render_static()
 
     for (int i = 0; i < WINDOW_WIDTH; i++)
         addch('-');
+
+}
+
+void clear_screen()
+{
+    for (int i = 1; i <= WINDOW_HEIGHT; i++)
+    {
+        move(WINDOW_Y + i, WINDOW_X + 1);
+        for (int j = 0; j < WINDOW_WIDTH; i++)
+            addch(' ');
+    }
 
 }
 

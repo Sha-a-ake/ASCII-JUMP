@@ -4,6 +4,7 @@
 #define PLAYER_HEIGHT 3
 #define PLAYER_WIDTH 3
 
+// Chainging height may require editing player rendering function
 #define PLAYER1  " 0 "
 #define PLAYER2 "\\|/"
 #define PLAYER3  "/|\\"
