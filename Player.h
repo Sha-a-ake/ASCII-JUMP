@@ -17,7 +17,7 @@ typedef struct p
     int   y;
     float y_real;
 
-    float Vy = 0;
+    float Vy;
 
 } player;
 
