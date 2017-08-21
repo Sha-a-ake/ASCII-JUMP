@@ -9,6 +9,7 @@
 #define PLAYER2  "/O\\"
 #define PLAYER3  "_|_"
 
+#define GRAVITATION 0.1
 
 typedef struct p
 {
@@ -22,7 +23,7 @@ typedef struct p
 } player;
 
 // Create new player
-player new_player(float x, float y);
+player new_player(float x, float y, float Vy);
 
 // Player left side
 int plyrls(player plyr);
@@ -36,5 +37,6 @@ int plyrbh(player plyr);
 int plyrvy(player plyr);
 
 player plyrmv(player p, float dx, float dy);
+player plyrfall(player p);
 
 #endif

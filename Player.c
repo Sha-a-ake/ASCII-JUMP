@@ -3,7 +3,7 @@
 
 #include "Player.h"
 
-player new_player(float x, float y)
+player new_player(float x, float y, float Vy)
 {
     player plyr;
 
@@ -12,6 +12,8 @@ player new_player(float x, float y)
 
     plyr.x = trunc(x);
     plyr.y = trunc(y);
+
+    plyr.Vy = Vy;
 
     return plyr;
 }
@@ -43,9 +45,19 @@ int plyrvy(player plyr)
 
 player plyrmv(player p, float dx, float dy)
 {
-    player new_plyr = new_player(p.x_real + dx, p.y_real + dy);
+    player new_plyr = new_player(p.x_real + dx, p.y_real + dy, p.Vy);
 
     return new_plyr;
 }
 
+player plyrfall(player p)
+{
+    player new_plyr = new_player(p.x_real, p.y_real - p.Vy, p.Vy - GRAVITATION);
+
+    if (p.y >= 16) 
+        new_plyr.Vy = 1;
+
+    return new_plyr;
+
+}
     

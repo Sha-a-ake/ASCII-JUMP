@@ -12,6 +12,7 @@ void render_all(platform* chunk, player* p)
     int ch;
 
     clear_screen();
+    render_static();
 
     for (int i = 0; i < 3; ++i)
     {

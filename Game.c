@@ -8,6 +8,7 @@
 #include "Rendering.h"
 #include "Generating.h"
 #include "Platform.h"
+#include "Player.h"
 
 int game_cycle()
 {
@@ -15,28 +16,38 @@ int game_cycle()
     bool game_on = true;
     int i = 0, y = 0;
 
+
     platform my_chunk[3];
-    player my_plyr = new_player(7, 7);
+    player my_plyr = new_player(7, 7, 1);
 
     gen_chunk(my_chunk);
 
     render_static();
+
+    ch = getch();
+    move(0, 0);
+    putchar(ch);
 
     while (game_on)
     {
 
         render_all(my_chunk, &my_plyr);
 
-    if ((ch = getch()) != ERR)
-    {
-        if (ch == KEY_BREAK)
-            break;
-        else if (ch == KEY_RIGHT)
-            my_plyr = plyrmv(my_plyr, 1, 0);
-        else if (ch == KEY_LEFT)
-            my_plyr = plyrmv(my_plyr, -1, 0);
-    }
+        ch = wgetch(stdscr);
 
+        if (ch != ERR)
+        {
+            if (ch == KEY_BREAK)
+                break;
+            else if (ch == KEY_RIGHT)
+                my_plyr = plyrmv(my_plyr, 1, 0);
+            else if (ch == KEY_LEFT)
+                my_plyr = plyrmv(my_plyr, -1, 0);
+
+        }
+
+        my_plyr = plyrfall(my_plyr);
+        usleep(50000);
 
     }
 
