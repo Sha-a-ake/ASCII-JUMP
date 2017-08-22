@@ -5,9 +5,9 @@
 #define PLAYER_WIDTH 3
 
 // Chainging height may require editing player rendering function
-#define PLAYER1  " o "
-#define PLAYER2  " | "
-#define PLAYER3  "0x0"
+#define PLAYER1  " ____ "
+#define PLAYER2  "(0_0) "
+#define PLAYER3  " ||| "
 
 #define GRAVITATION 0.1
 
