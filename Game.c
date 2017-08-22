@@ -10,6 +10,7 @@
 #include "Generating.h"
 #include "Platform.h"
 #include "Player.h"
+#include "Game.h"
 
 int game_cycle()
 {
@@ -17,12 +18,10 @@ int game_cycle()
     bool game_on = true;
     int i = 0, y = 0;
 
-    int height = 0;
+    int height = 0; // very importaint var
 
-    platform current_chunk[5];
-    platform top_chunk[5];
-    gen_chunk(current_chunk, 0);
-    gen_chunk(top_chunk, WINDOW_HEIGHT);
+    platform all_platforms[PLATFORM_COUNT];
+    gen_platform_init(all_platforms);
 
     player my_plyr = new_player(7, 7, 1);
 
@@ -34,9 +33,18 @@ int game_cycle()
 
     while (game_on)
     {
-        // height += 1;
 
-        render_all(current_chunk, top_chunk, &my_plyr, height);
+        //
+        for (int i = 0; i < PLATFORM_COUNT; ++i) // function prototype, i also added "dead" bool to struct a
+        {
+            if (plnkh(all_platforms[i]) + height >= WINDOW_HEIGHT)
+            {
+                gen_platform(&all_platforms[i], height);
+            }
+        }
+        //
+
+        render_all(all_platforms, &my_plyr, height);
 
         ch = getch();
 
@@ -45,15 +53,14 @@ int game_cycle()
             if (ch == KEY_BREAK)
                 break;
             else if (ch == KEY_RIGHT)
-            {
                 my_plyr = plyrmv(my_plyr, 1, 0);
-                height += 1;
-            }
             else if (ch == KEY_LEFT)
-            {
                 my_plyr = plyrmv(my_plyr, -1, 0);
+            // for debug
+            else if (ch == 'w')
+                height += 1;
+            else if (ch == 's')
                 height -= 1;
-            }
         }
 
         my_plyr = plyrfall(my_plyr);

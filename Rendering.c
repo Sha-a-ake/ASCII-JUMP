@@ -5,9 +5,10 @@
 #include "Generating.h"
 #include "Platform.h"
 #include "Player.h"
+#include "Game.h"
 
 
-void render_all(platform* current_chunk, platform* top_chunk, player* p, int height)
+void render_all(platform* all_platforms, player* p, int height)
 {
     int ch;
     int camera_h = height;
@@ -15,17 +16,9 @@ void render_all(platform* current_chunk, platform* top_chunk, player* p, int hei
     clear_screen();
     render_static();
 
-    // if (camera_h == WINDOW_HEIGHT)
-    // {
-    //     current_chunk = top_chunk;
-    //     gen_chunk(top_chunk, -WINDOW_HEIGHT);
-    // }
+    for (int i = 0; i < PLATFORM_COUNT; ++i)
+        render_platform(all_platforms[i], camera_h, height);
 
-    for (int i = 0; i < 5; ++i)
-    {
-        render_platform(current_chunk[i], camera_h);
-        render_platform(top_chunk[i], camera_h);
-    }
 
     render_player(*p);
 
@@ -66,7 +59,7 @@ void clear_screen()
     }
 }
 
-void render_platform(platform p, int camera_h)
+void render_platform(platform p, int camera_h, int height)
 {
     move(plnkh(p) + WINDOW_Y + camera_h, plnkls(p) + WINDOW_X);
 
@@ -77,7 +70,9 @@ void render_platform(platform p, int camera_h)
         for (int i = 0; i < PLATFORM_WIDTH - 2; i++)
         {
             // addch('=');
-            printw("%d", p.y);
+
+            // for debug
+            printw("h:%dp:%d", p.y , p.y + height);
             break;
         }
 
