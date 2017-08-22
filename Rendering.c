@@ -68,13 +68,7 @@ void render_platform(platform p, int camera_h, int height)
         addch('<');
 
         for (int i = 0; i < PLATFORM_WIDTH - 2; i++)
-        {
-            // addch('=');
-
-            // for debug
-            printw("h:%dp:%d", p.y , p.y + height);
-            break;
-        }
+            addch('=');
 
         addch('>');
     }

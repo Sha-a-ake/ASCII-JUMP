@@ -2,11 +2,11 @@
 #define __PLAYER__
 
 #define PLAYER_HEIGHT 3
-#define PLAYER_WIDTH 3
+#define PLAYER_WIDTH 5
 
 // Chainging height may require editing player rendering function
-#define PLAYER1  " ____ "
-#define PLAYER2  "(0_0) "
+#define PLAYER1  " _!_ "
+#define PLAYER2  "(0_0)"
 #define PLAYER3  " ||| "
 
 #define GRAVITATION 0.1
