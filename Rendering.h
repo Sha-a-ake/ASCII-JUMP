@@ -8,10 +8,10 @@
 
 #include "Platform.h"
 
-void render_all(platform* chunk, player* p);
+void render_all(platform* current_chunk, platform* top_chunk, player* p, int height);
 void render_static();
 void clear_screen();
-void render_platform(platform p);
+void render_platform(platform p, int camera_h);
 void render_player(player p);
 
 #endif

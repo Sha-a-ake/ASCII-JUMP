@@ -17,11 +17,14 @@ int game_cycle()
     bool game_on = true;
     int i = 0, y = 0;
 
+    int height = 0;
 
-    platform my_chunk[3];
+    platform current_chunk[5];
+    platform top_chunk[5];
+    gen_chunk(current_chunk, 0);
+    gen_chunk(top_chunk, WINDOW_HEIGHT);
+
     player my_plyr = new_player(7, 7, 1);
-
-    gen_chunk(my_chunk);
 
     render_static();
 
@@ -31,8 +34,9 @@ int game_cycle()
 
     while (game_on)
     {
+        // height += 1;
 
-        render_all(my_chunk, &my_plyr);
+        render_all(current_chunk, top_chunk, &my_plyr, height);
 
         ch = getch();
 
@@ -41,10 +45,15 @@ int game_cycle()
             if (ch == KEY_BREAK)
                 break;
             else if (ch == KEY_RIGHT)
+            {
                 my_plyr = plyrmv(my_plyr, 1, 0);
+                height += 1;
+            }
             else if (ch == KEY_LEFT)
+            {
                 my_plyr = plyrmv(my_plyr, -1, 0);
-
+                height -= 1;
+            }
         }
 
         my_plyr = plyrfall(my_plyr);

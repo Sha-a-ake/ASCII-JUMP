@@ -3,6 +3,6 @@
 
 #include "Platform.h"
 
-void gen_chunk(platform* chunk);
+void gen_chunk(platform* chunk, int height);
 
 #endif
