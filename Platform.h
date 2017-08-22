@@ -5,7 +5,7 @@
 #include "Player.h"
 #include "Platform.h"
 
-#define PLATFORM_WIDTH 5
+#define PLATFORM_WIDTH 9
 
 typedef struct a
 {

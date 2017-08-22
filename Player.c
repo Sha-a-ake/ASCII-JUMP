@@ -56,8 +56,8 @@ player plyrfall(player p)
 {
     player new_plyr = new_player(p.x_real, p.y_real - p.Vy, p.Vy - GRAVITATION);
 
-    if (p.y >= WINDOW_HEIGHT-4) 
-        new_plyr.Vy = 1;
+    if (p.y >= WINDOW_HEIGHT-PLAYER_HEIGHT-1) 
+        new_plyr.Vy = 1.5;
 
     if (plyrls(p) < 2)
         new_plyr.x_real = 2;

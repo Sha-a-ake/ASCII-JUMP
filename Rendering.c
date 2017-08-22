@@ -82,6 +82,8 @@ void render_player(player p)
    printw(PLAYER2);
    move(plyrth(p) + 2 + WINDOW_Y, plyrls(p) + WINDOW_X);
    printw(PLAYER3);
+   move(plyrth(p) + 3 + WINDOW_Y, plyrls(p) + WINDOW_X);
+   printw(PLAYER4);
 
 }
 
