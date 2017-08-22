@@ -23,7 +23,7 @@ void gen_platform_init(platform* platforms)
 
     for (int i = 0; i < PLATFORM_COUNT; ++i)
     {
-        platforms[i] = new_platform(random_int(0, WINDOW_WIDTH - PLATFORM_WIDTH), random_int(0, WINDOW_HEIGHT));
+        platforms[i] = new_platform(random_int(0, WINDOW_WIDTH - PLATFORM_WIDTH), random_int(0, 7) + 6*i);
     }
 
 }
