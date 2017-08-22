@@ -5,7 +5,7 @@
 #include "Player.h"
 #include "Platform.h"
 
-#define PLATFORM_WIDTH 9
+#define PLATFORM_WIDTH 11
 
 typedef struct a
 {
@@ -29,6 +29,6 @@ int plnkrs(platform plnk);
 int plnkh(platform plnk);
 
 // Plank-player collision
-bool plnkcls(platform plnk, player plyr);
+bool plnkcln(platform plnk, player plyr);
 
 #endif

@@ -66,6 +66,11 @@ player plyrfall(player p)
         new_plyr.x_real = WINDOW_WIDTH - PLAYER_WIDTH - 1;
 
     return new_plyr;
-
 }
-    
+
+player plyrjmp(player p)
+{
+    player new_plyr = new_player(p.x_real, p.y_real, 1.5);
+
+    return new_plyr;
+} 

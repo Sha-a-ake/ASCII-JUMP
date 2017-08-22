@@ -46,6 +46,10 @@ int game_cycle()
 
         render_all(all_platforms, &my_plyr, height);
 
+        for (int i = 0; i < PLATFORM_COUNT; ++i) 
+            if (plnkcln(all_platforms[i], my_plyr))
+                my_plyr = plyrjmp(my_plyr);
+
         ch = getch();
 
         if (ch != ERR)

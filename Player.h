@@ -39,5 +39,6 @@ int plyrvy(player plyr);
 
 player plyrmv(player p, float dx, float dy);
 player plyrfall(player p);
+player plyrjmp(player p);
 
 #endif
