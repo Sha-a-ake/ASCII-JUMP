@@ -22,7 +22,7 @@ void render_all(platform* all_platforms, player* p, int height)
 
     // Prints the height debug thingie
     attron(A_STANDOUT);
-    move(0, WINDOW_X);
+    move(WINDOW_Y-1, WINDOW_X);
     printw("height: %d\n", height);
     move(0, 0);
     attroff(A_STANDOUT);

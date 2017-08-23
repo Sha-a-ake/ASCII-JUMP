@@ -3,4 +3,6 @@
 
 #define PLATFORM_COUNT 8
 
+bool gameover(player p, int height);
+
 #endif

@@ -48,45 +48,28 @@ int game_cycle()
 
         // if screen needed to move up
         if (plyrbh(my_plyr) + height < WINDOW_HEIGHT/2)
-        {
             height += 1;
-        }
 
-        // if gameover
-        if (plyrbh(my_plyr) + height - plyrvy(my_plyr) > WINDOW_HEIGHT)
-        {
-            attron(A_STANDOUT);
-            render_player(my_plyr, height);
-            attroff(A_STANDOUT);
-
-            printw("YOU SUCK! (press any key to exit)");
-            while (ch == ERR)
-            {
-                ch = getch();
-                refresh();
-            }
+        // Checking gameover
+        if (gameover(my_plyr, height))
             break;
-        }
 
         // Making player fall. Literally
         my_plyr = plyrfall(my_plyr);
 
         // Platform generation
         for (int i = 0; i < PLATFORM_COUNT; ++i)
-        {
             if (plnkh(all_platforms[i]) + height >= WINDOW_HEIGHT)
-            {
                 gen_platform(&all_platforms[i], height);
-            }
-        }
 
         // Screen rendering
         render_all(all_platforms, &my_plyr, height);
 
+
+        // Collision checking
         for (int i = 0; i < PLATFORM_COUNT; ++i) 
             if (plnkcln(all_platforms[i], my_plyr))
                 my_plyr = plyrjmp(my_plyr);
-
 
         // Clearing the input buffer and falling to sleep
         tcflush(0, TCIFLUSH);
@@ -95,6 +78,33 @@ int game_cycle()
     }
 
     return 0;
+}
+
+bool gameover(player p, int height)
+{
+    if (plyrbh(p) + height - plyrvy(p) > WINDOW_HEIGHT)
+    {
+        int ch = ERR;
+        flash();
+        attron(A_STANDOUT);
+        render_player(p, height);
+        attroff(A_STANDOUT);
+
+        printw("YOU SUCK! (press any key to exit)");
+        refresh();
+        sleep(1);
+        while (ch == ERR)
+        {
+            tcflush(0, TCIFLUSH);
+            usleep(50000);
+            ch = getch();
+        }
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 
 int main()
