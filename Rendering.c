@@ -10,10 +10,9 @@
 
 void render_all(platform* all_platforms, player* p, int height)
 {
-    int ch;
     int camera_h = height;
 
-    clear_screen();
+    clear();
     render_static();
 
     for (int i = 0; i < PLATFORM_COUNT; ++i)
@@ -22,6 +21,7 @@ void render_all(platform* all_platforms, player* p, int height)
 
     render_player(*p, camera_h);
 
+    // Prints the height debug thingie
     attron(A_STANDOUT);
     move(0, WINDOW_X);
     printw("height: %d\n", height);
@@ -29,6 +29,7 @@ void render_all(platform* all_platforms, player* p, int height)
     attroff(A_STANDOUT);
 }
 
+// Types the window borders
 void render_static()
 {
     attron(A_DIM);
@@ -55,11 +56,7 @@ void render_static()
     attroff(A_DIM);
 }
 
-void clear_screen()
-{
-    clear();
-}
-
+// Draws one given platform
 void render_platform(platform p, int camera_h, int height)
 {
     attron(A_BOLD);
@@ -79,6 +76,7 @@ void render_platform(platform p, int camera_h, int height)
     attroff(A_BOLD);
 }
 
+// Draws one given player
 void render_player(player p, int camera_h)
 {
     move(plyrth(p) + WINDOW_Y + camera_h, plyrls(p) + WINDOW_X);

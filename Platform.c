@@ -28,6 +28,7 @@ int plnkh(platform plnk)
 }
 
 
+// Checks if the given player and platform are colliding
 bool plnkcln(platform plnk, player plyr)
 {
     if (((plyrbh(plyr) <= plnkh(plnk)) && (plyrbh(plyr) - plyr.Vy >= plnkh(plnk))) && (plnkls(plnk) <= plyrrs(plyr)) && (plnkrs(plnk) >= plyrls(plyr)))

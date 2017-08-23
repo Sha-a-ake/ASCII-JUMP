@@ -14,11 +14,10 @@
 
 int game_cycle()
 {
-    int ch;
-    bool game_on = true;
-    int i = 0, y = 0;
+    int ch; // Pressed key
+    bool game_on = true; // Checks if the game is still going
 
-    int height = 0; // very importaint var
+    int height = 0;
 
     platform all_platforms[PLATFORM_COUNT];
     gen_platform_init(all_platforms);
@@ -27,31 +26,11 @@ int game_cycle()
 
     render_static();
 
-    ch = getch();
-    move(0, 0);
-    putchar(ch);
-
+    // Here be loop
     while (game_on)
     {
-
-        //
-        for (int i = 0; i < PLATFORM_COUNT; ++i) // function prototype, i also added "dead" bool to struct a
-        {
-            if (plnkh(all_platforms[i]) + height >= WINDOW_HEIGHT)
-            {
-                gen_platform(&all_platforms[i], height);
-            }
-        }
-        //
-
-        render_all(all_platforms, &my_plyr, height);
-
-        for (int i = 0; i < PLATFORM_COUNT; ++i) 
-            if (plnkcln(all_platforms[i], my_plyr))
-                my_plyr = plyrjmp(my_plyr);
-
+        // Controls alalysis
         ch = getch();
-
         if (ch != ERR)
         {
             if (ch == 27)
@@ -67,7 +46,27 @@ int game_cycle()
                 height -= 1;
         }
 
+        // Making player fall. Literally
         my_plyr = plyrfall(my_plyr);
+
+        // Platform generation
+        for (int i = 0; i < PLATFORM_COUNT; ++i)
+        {
+            if (plnkh(all_platforms[i]) + height >= WINDOW_HEIGHT)
+            {
+                gen_platform(&all_platforms[i], height);
+            }
+        }
+
+        // Screen rendering
+        render_all(all_platforms, &my_plyr, height);
+
+        for (int i = 0; i < PLATFORM_COUNT; ++i) 
+            if (plnkcln(all_platforms[i], my_plyr))
+                my_plyr = plyrjmp(my_plyr);
+
+
+        // Clearing the input buffer and falling to sleep
         tcflush(0, TCIFLUSH);
         usleep(50000);
 

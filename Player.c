@@ -44,6 +44,7 @@ int plyrvy(player plyr)
     return plyr.Vy;
 }
 
+// Moves the player on the given dx and dy
 player plyrmv(player p, float dx, float dy)
 {
     player new_plyr = new_player(p.x_real + dx, p.y_real + dy, p.Vy);
@@ -52,6 +53,7 @@ player plyrmv(player p, float dx, float dy)
     return new_plyr;
 }
 
+// Makes the player fal. Literally. And updates his situation. Badly needs a rewrite
 player plyrfall(player p)
 {
     player new_plyr = new_player(p.x_real, p.y_real - p.Vy, p.Vy - GRAVITATION);
