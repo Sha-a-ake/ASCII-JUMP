@@ -54,7 +54,7 @@ int game_cycle()
 
         if (ch != ERR)
         {
-            if (ch == KEY_BREAK)
+            if (ch == 27)
                 break;
             else if (ch == KEY_RIGHT)
                 my_plyr = plyrmv(my_plyr, 1, 0);
@@ -85,6 +85,7 @@ int main()
     noecho();
     keypad(stdscr, TRUE);
     nodelay(stdscr, TRUE);
+    set_escdelay(0);
 
     game_cycle();
 
