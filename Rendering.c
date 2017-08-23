@@ -84,6 +84,5 @@ void render_player(player p, int camera_h)
    printw(PLAYER3);
    move(plyrth(p) + 3 + WINDOW_Y + camera_h, plyrls(p) + WINDOW_X);
    printw(PLAYER4);
-
 }
 

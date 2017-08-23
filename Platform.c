@@ -30,7 +30,7 @@ int plnkh(platform plnk)
 
 bool plnkcln(platform plnk, player plyr)
 {
-    if ((plnkh(plnk) == plyrbh(plyr)) && (plnkls(plnk) <= plyrrs(plyr)) && (plnkrs(plnk) >= plyrls(plyr)))
+    if (((plyrbh(plyr) <= plnkh(plnk)) && (plyrbh(plyr) - plyr.Vy >= plnkh(plnk))) && (plnkls(plnk) <= plyrrs(plyr)) && (plnkrs(plnk) >= plyrls(plyr)))
         return true;
     else
         return false;
