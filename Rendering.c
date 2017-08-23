@@ -22,13 +22,17 @@ void render_all(platform* all_platforms, player* p, int height)
 
     render_player(*p, camera_h);
 
+    attron(A_STANDOUT);
     move(0, WINDOW_X);
     printw("height: %d\n", height);
     move(0, 0);
+    attroff(A_STANDOUT);
 }
 
 void render_static()
 {
+    attron(A_DIM);
+
     move(WINDOW_Y, WINDOW_X);
 
     for (int i = 0; i < WINDOW_WIDTH; i++)
@@ -47,20 +51,19 @@ void render_static()
 
     for (int i = 0; i < WINDOW_WIDTH; i++)
         addch('-');
+
+    attroff(A_DIM);
 }
 
 void clear_screen()
 {
-    for (int i = 1; i <= WINDOW_HEIGHT - 1; i++)
-    {
-        move(WINDOW_Y + i, WINDOW_X + 1);
-        for (int j = 0; j <= WINDOW_WIDTH - 3; j++)
-	addch(' ');
-    }
+    clear();
 }
 
 void render_platform(platform p, int camera_h, int height)
 {
+    attron(A_BOLD);
+
     move(plnkh(p) + WINDOW_Y + camera_h, plnkls(p) + WINDOW_X);
 
     if (plnkh(p) + camera_h < WINDOW_HEIGHT)
@@ -72,17 +75,18 @@ void render_platform(platform p, int camera_h, int height)
 
         addch('>');
     }
+
+    attroff(A_BOLD);
 }
 
 void render_player(player p, int camera_h)
 {
-   move(plyrth(p) + WINDOW_Y + camera_h, plyrls(p) + WINDOW_X);
-   printw(PLAYER1);
-   move(plyrth(p) + 1 + WINDOW_Y + camera_h, plyrls(p) + WINDOW_X);
-   printw(PLAYER2);
-   move(plyrth(p) + 2 + WINDOW_Y + camera_h, plyrls(p) + WINDOW_X);
-   printw(PLAYER3);
-   move(plyrth(p) + 3 + WINDOW_Y + camera_h, plyrls(p) + WINDOW_X);
-   printw(PLAYER4);
+    move(plyrth(p) + WINDOW_Y + camera_h, plyrls(p) + WINDOW_X);
+    printw(PLAYER1);
+    move(plyrth(p) + 1 + WINDOW_Y + camera_h, plyrls(p) + WINDOW_X);
+    printw(PLAYER2);
+    move(plyrth(p) + 2 + WINDOW_Y + camera_h, plyrls(p) + WINDOW_X);
+    printw(PLAYER3);
+    move(plyrth(p) + 3 + WINDOW_Y + camera_h, plyrls(p) + WINDOW_X);
+    printw(PLAYER4);
 }
-
