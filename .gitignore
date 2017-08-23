@@ -15,6 +15,9 @@
 # Muh vim swap
 *.swp
 
+# Non-muh MacOS bullshit desktop file
+.DS_Store
+
 # Precompiled Headers
 *.gch
 *.pch
