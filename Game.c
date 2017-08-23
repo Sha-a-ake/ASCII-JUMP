@@ -22,7 +22,7 @@ int game_cycle()
     platform all_platforms[PLATFORM_COUNT];
     gen_platform_init(all_platforms);
 
-    player my_plyr = new_player(7, 7, 1);
+    player my_plyr = new_player(WINDOW_WIDTH/2, WINDOW_HEIGHT - PLAYER_HEIGHT, 1);
 
     render_static();
 
@@ -44,6 +44,28 @@ int game_cycle()
                 height += 1;
             else if (ch == 's')
                 height -= 1;
+        }
+
+        // if screen needed to move up
+        if (plyrbh(my_plyr) + height < WINDOW_HEIGHT/2)
+        {
+            height += 1;
+        }
+
+        // if gameover
+        if (plyrbh(my_plyr) + height - plyrvy(my_plyr) > WINDOW_HEIGHT)
+        {
+            attron(A_STANDOUT);
+            render_player(my_plyr, height);
+            attroff(A_STANDOUT);
+
+            printw("YOU SUCK! (press any key to exit)");
+            while (ch == ERR)
+            {
+                ch = getch();
+                refresh();
+            }
+            break;
         }
 
         // Making player fall. Literally

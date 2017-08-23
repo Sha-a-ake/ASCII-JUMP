@@ -18,7 +18,6 @@ void render_all(platform* all_platforms, player* p, int height)
     for (int i = 0; i < PLATFORM_COUNT; ++i)
         render_platform(all_platforms[i], camera_h, height);
 
-
     render_player(*p, camera_h);
 
     // Prints the height debug thingie
