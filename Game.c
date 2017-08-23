@@ -36,9 +36,9 @@ int game_cycle()
             if (ch == 27)
                 break;
             else if (ch == KEY_RIGHT)
-                my_plyr = plyrmv(my_plyr, 1, 0);
+                my_plyr = plyrmv(my_plyr, 2, 0);
             else if (ch == KEY_LEFT)
-                my_plyr = plyrmv(my_plyr, -1, 0);
+                my_plyr = plyrmv(my_plyr, -2, 0);
             // for debug
             else if (ch == 'w')
                 height += 1;

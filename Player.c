@@ -62,10 +62,10 @@ player plyrfall(player p)
         new_plyr.Vy = 1.5;
 
     if (plyrls(p) < 2)
-        new_plyr.x_real = 2;
+        new_plyr.x_real = WINDOW_WIDTH - PLAYER_WIDTH - 1;
 
     if (plyrrs(p) > WINDOW_WIDTH - 2)
-        new_plyr.x_real = WINDOW_WIDTH - PLAYER_WIDTH - 1;
+        new_plyr.x_real = 2;
 
     return new_plyr;
 }
