@@ -20,7 +20,7 @@ void render_all(platform* all_platforms, player* p, int height)
         render_platform(all_platforms[i], camera_h, height);
 
 
-    render_player(*p);
+    render_player(*p, camera_h);
 
     move(0, WINDOW_X);
     printw("height: %d\n", height);
@@ -74,15 +74,15 @@ void render_platform(platform p, int camera_h, int height)
     }
 }
 
-void render_player(player p)
+void render_player(player p, int camera_h)
 {
-   move(plyrth(p) + WINDOW_Y, plyrls(p) + WINDOW_X);
+   move(plyrth(p) + WINDOW_Y + camera_h, plyrls(p) + WINDOW_X);
    printw(PLAYER1);
-   move(plyrth(p) + 1 + WINDOW_Y, plyrls(p) + WINDOW_X);
+   move(plyrth(p) + 1 + WINDOW_Y + camera_h, plyrls(p) + WINDOW_X);
    printw(PLAYER2);
-   move(plyrth(p) + 2 + WINDOW_Y, plyrls(p) + WINDOW_X);
+   move(plyrth(p) + 2 + WINDOW_Y + camera_h, plyrls(p) + WINDOW_X);
    printw(PLAYER3);
-   move(plyrth(p) + 3 + WINDOW_Y, plyrls(p) + WINDOW_X);
+   move(plyrth(p) + 3 + WINDOW_Y + camera_h, plyrls(p) + WINDOW_X);
    printw(PLAYER4);
 
 }
