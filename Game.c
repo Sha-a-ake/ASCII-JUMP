@@ -20,16 +20,18 @@ int get_action(player* p, int *height)
         if (ch == 27)
             return 0;
         else if (ch == KEY_RIGHT)
-            *p = plyrmv(*p, 2, 0);
+            player_mv(p, 2, 0);
         else if (ch == KEY_LEFT)
-            *p = plyrmv(*p, -2, 0);
+            player_mv(p, -2, 0);
         // for debug
         else if (ch == 'w')
             *height += 1;
         else if (ch == 's')
             *height -= 1;
     }
-    
+
+    player_fall(p);
+
     return 1;
 }
 
@@ -61,9 +63,6 @@ int game_cycle()
         if (gameover(my_plyr, height))
             break;
 
-        // Making player fall. Literally
-        my_plyr = plyrfall(my_plyr);
-
         // Platform generation
         for (int i = 0; i < PLATFORM_COUNT; ++i)
             if (plnkh(all_platforms[i]) + height >= WINDOW_HEIGHT)
@@ -76,7 +75,7 @@ int game_cycle()
         // Collision checking
         for (int i = 0; i < PLATFORM_COUNT; ++i) 
             if (plnkcln(all_platforms[i], my_plyr))
-                my_plyr = plyrjmp(my_plyr);
+                player_jmp(&my_plyr);
 
         // Clearing the input buffer and falling to sleep
         tcflush(0, TCIFLUSH);

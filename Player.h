@@ -11,6 +11,7 @@
 #define PLAYER4  "_/ \\_"
 
 #define GRAVITATION 0.1
+#define JUMP_HEIGHT 1.5
 
 typedef struct p
 {
@@ -37,8 +38,10 @@ int plyrbh(player plyr);
 // Player y speed
 int plyrvy(player plyr);
 
-player plyrmv(player p, float dx, float dy);
-player plyrfall(player p);
-player plyrjmp(player p);
+
+void player_mv(player* p, float dx, float dy);
+void player_jmp(player* p);
+void player_fall(player* p);
+void player_upd(player* p);
 
 #endif
