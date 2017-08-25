@@ -48,7 +48,6 @@ int game_cycle()
 
     player my_plyr = new_player(WINDOW_WIDTH/2, WINDOW_HEIGHT - PLAYER_HEIGHT, 1);
 
-    render_static();
 
     // Here be loop
     while (get_action(&my_plyr, &height))
@@ -93,7 +92,7 @@ bool gameover(player p, int height)
         int ch = ERR;
         flash();
         attron(A_STANDOUT);
-        render_player(p, height);
+        render_player(p, height, WINDOW_X, WINDOW_Y);
         attroff(A_STANDOUT);
 
         printw("YOU SUCK! (press any key to exit)");
