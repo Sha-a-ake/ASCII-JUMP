@@ -12,9 +12,31 @@
 #include "Player.h"
 #include "Game.h"
 
+int get_action(player* p, int *height)
+{
+    int ch = getch();
+    if (ch != ERR)
+    {
+        if (ch == 27)
+            return 0;
+        else if (ch == KEY_RIGHT)
+            *p = plyrmv(*p, 2, 0);
+        else if (ch == KEY_LEFT)
+            *p = plyrmv(*p, -2, 0);
+        // for debug
+        else if (ch == 'w')
+            *height += 1;
+        else if (ch == 's')
+            *height -= 1;
+    }
+    
+    return 1;
+}
+
+
 int game_cycle()
 {
-    int ch; // Pressed key
+    int action; // Pressed key
     bool game_on = true; // Checks if the game is still going
 
     int height = 0;
@@ -27,24 +49,9 @@ int game_cycle()
     render_static();
 
     // Here be loop
-    while (game_on)
+    while (get_action(&my_plyr, &height))
     {
         // Controls alalysis
-        ch = getch();
-        if (ch != ERR)
-        {
-            if (ch == 27)
-                break;
-            else if (ch == KEY_RIGHT)
-                my_plyr = plyrmv(my_plyr, 2, 0);
-            else if (ch == KEY_LEFT)
-                my_plyr = plyrmv(my_plyr, -2, 0);
-            // for debug
-            else if (ch == 'w')
-                height += 1;
-            else if (ch == 's')
-                height -= 1;
-        }
 
         // if screen needed to move up
         if (plyrbh(my_plyr) + height < WINDOW_HEIGHT/2)
