@@ -79,9 +79,9 @@ void player_upd(player* p)
         player_jmp(p);
 
     if (plyrls(*p) < 2)
-        (*p).x = WINDOW_WIDTH - PLAYER_WIDTH - 1;
+        (*p).x_real = WINDOW_WIDTH - PLAYER_WIDTH - 1;
 
     if (plyrrs(*p) > WINDOW_WIDTH - 2)
-        (*p).x = 2;
+        (*p).x_real = 2;
 
 }
