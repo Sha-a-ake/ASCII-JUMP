@@ -32,16 +32,17 @@ void render_all(platform* all_platforms, player* p, int height)
 
     clear();
     render_window(WINDOW_X, WINDOW_Y, WINDOW_WIDTH, WINDOW_HEIGHT);
-    render_window(80, WINDOW_Y, WINDOW_WIDTH, WINDOW_HEIGHT);
+    // Reserved for far future
+    //render_window(80, WINDOW_Y, WINDOW_WIDTH, WINDOW_HEIGHT);
 
     for (int i = 0; i < PLATFORM_COUNT; ++i)
     {
         render_platform(all_platforms[i], camera_h, height, WINDOW_X, WINDOW_Y);
-        render_platform(all_platforms[i], camera_h, height, 80, WINDOW_Y);
+        // render_platform(all_platforms[i], camera_h, height, 80, WINDOW_Y);
     }
 
     render_player(*p, camera_h, WINDOW_X, WINDOW_Y);
-    render_player(*p, camera_h, 80, WINDOW_Y);
+    // render_player(*p, camera_h, 80, WINDOW_Y);
 
     // Prints the height debug thingie
     attron(A_STANDOUT);
@@ -83,7 +84,7 @@ void render_window(int x, int y, int x_len, int y_len)
     addch('F' | A_STANDOUT); addch('1' | A_STANDOUT);
     printw(" Help   ");
     addch('F' | A_STANDOUT); addch('2' | A_STANDOUT);
-    printw(" EULA   ");
+    printw(" License");
 
 }
 

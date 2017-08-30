@@ -183,7 +183,7 @@ void read_license()
     attroff(A_BOLD);
 
     attron(A_DIM);
-    mvaddstr(++pos_y, pos_x, "(press any key to continue gaming)");
+    mvaddstr(++pos_y, pos_x, "(press any key to continue playing)");
     attroff(A_DIM);
 
     while (ch == ERR)
