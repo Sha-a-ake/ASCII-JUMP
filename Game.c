@@ -168,7 +168,7 @@ void read_license()
     mvaddstr(++pos_y, pos_x, "THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR");
     mvaddstr(++pos_y, pos_x, "PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM");
     mvaddstr(++pos_y, pos_x, "IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF");
-    mvaddstr(++pos_y, pos_x, "");
+    mvaddstr(++pos_y, pos_x, "ALL NECESSARY SERVICING, REPAIR OR CORRECTION.");
     mvaddstr(++pos_y, pos_x, "");
     mvaddstr(++pos_y, pos_x, "");
     mvaddstr(++pos_y, pos_x, "");
