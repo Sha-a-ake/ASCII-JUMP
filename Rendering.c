@@ -51,7 +51,7 @@ void render_all(platform* all_platforms, player* p, int height)
     attroff(A_STANDOUT);
 }
 
-// Types the window borders
+// Types the window borders and stuff...
 void render_window(int x, int y, int x_len, int y_len)
 {
     attron(A_DIM);
@@ -76,6 +76,15 @@ void render_window(int x, int y, int x_len, int y_len)
         addch('-');
 
     attroff(A_DIM);
+
+    move(WINDOW_HEIGHT + 5, WINDOW_X);
+    addch('E' | A_STANDOUT); addch('S' | A_STANDOUT); addch('C' | A_STANDOUT);
+    printw(" Quit   ");
+    addch('F' | A_STANDOUT); addch('1' | A_STANDOUT);
+    printw(" Help   ");
+    addch('F' | A_STANDOUT); addch('2' | A_STANDOUT);
+    printw(" EULA   ");
+
 }
 
 // Draws one given platform

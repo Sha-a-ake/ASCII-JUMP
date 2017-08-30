@@ -35,12 +35,16 @@ int get_action(player* p, int *height)
     int ch = getch();
     if (ch != ERR)
     {
-        if (ch == 27)
+        if (ch == 27) //ESC
             return 0;
-        else if (ch == KEY_RIGHT)
+        else if (ch == KEY_RIGHT) // ->
             player_mv(p, 2, 0);
-        else if (ch == KEY_LEFT)
+        else if (ch == KEY_LEFT) // <-
             player_mv(p, -2, 0);
+        else if (ch == 265) // F1
+            read_help();
+        else if (ch == 266) // F2
+            read_license();
         // for debug
         else if (ch == 'w')
             *height += 1;
@@ -77,7 +81,7 @@ int game_cycle()
             height += 1;
 
         // Checking gameover
-        if (gameover(my_plyr, height))
+        if (gameover(my_plyr, height, all_platforms))
             break;
 
         // Platform generation
@@ -103,12 +107,15 @@ int game_cycle()
     return 0;
 }
 
-bool gameover(player p, int height)
+bool gameover(player p, int height, platform* all_platforms)
 {
     if (plyrbh(p) + height - plyrvy(p) > WINDOW_HEIGHT)
     {
         int ch = ERR;
         flash();
+        clear();
+
+        render_all(all_platforms, &p, height);
         attron(A_STANDOUT);
         render_player(p, height, WINDOW_X, WINDOW_Y);
         attroff(A_STANDOUT);
@@ -128,6 +135,84 @@ bool gameover(player p, int height)
     {
         return false;
     }
+}
+
+void read_license()
+{
+    int ch = ERR;
+    int pos_y =  WINDOW_Y + 5;
+    int pos_x =  WINDOW_X + 5;
+
+    clear();
+
+    move(WINDOW_Y, WINDOW_X);
+    hline('#', 85);
+    vline('#', 31);
+    move(WINDOW_Y + 31, WINDOW_X);
+    hline('#', 85);
+    move(WINDOW_Y, WINDOW_X + 85 -1);
+    vline('#', 31);
+    move(pos_y , pos_x);
+
+    attron(A_BOLD);
+
+    mvaddstr(++pos_y, pos_x, "Copyright © 2017 Anton Makhtinger, Evgeniy Mazayshvilly");
+    mvaddstr(++pos_y, pos_x, "");
+    attron(A_STANDOUT);
+    mvaddstr(++pos_y, pos_x, "WARRANTY");
+    attroff(A_STANDOUT);
+    mvaddstr(++pos_y, pos_x, "THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY");
+    mvaddstr(++pos_y, pos_x, "APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT");
+    mvaddstr(++pos_y, pos_x, "HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM 'AS IS' WITHOUT WARRANTY");
+    mvaddstr(++pos_y, pos_x, "OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO,");
+    mvaddstr(++pos_y, pos_x, "THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR");
+    mvaddstr(++pos_y, pos_x, "PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM");
+    mvaddstr(++pos_y, pos_x, "IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF");
+    mvaddstr(++pos_y, pos_x, "");
+    mvaddstr(++pos_y, pos_x, "");
+    mvaddstr(++pos_y, pos_x, "");
+    mvaddstr(++pos_y, pos_x, "");
+    attron(A_STANDOUT);
+    mvaddstr(++pos_y, pos_x, "CONDITIONS");
+    attroff(A_STANDOUT);
+    mvaddstr(++pos_y, pos_x, "You should have received a copy of the GNU General Public License");
+    mvaddstr(++pos_y, pos_x, "along with this program. If not, see");
+    mvaddstr(++pos_y, pos_x, "<http://www.gnu.org/licenses/>.");
+    mvaddstr(++pos_y, pos_x, "");
+
+    attroff(A_BOLD);
+
+    attron(A_DIM);
+    mvaddstr(++pos_y, pos_x, "(press any key to continue gaming)");
+    attroff(A_DIM);
+
+    while (ch == ERR)
+        ch = getch();
+}
+
+void read_help()
+{
+    int ch = ERR;
+    int pos_y =  WINDOW_Y + 5;
+    int pos_x =  WINDOW_X + 5;
+
+    clear();
+
+    move(WINDOW_Y, WINDOW_X);
+    hline('#', 85);
+    vline('#', 27);
+    move(WINDOW_Y + 27, WINDOW_X);
+    hline('#', 85);
+    move(WINDOW_Y, WINDOW_X + 85 -1);
+    vline('#', 27);
+    move(pos_y , pos_x);
+
+    mvaddstr(++pos_y, pos_x, "");
+    mvaddstr(++pos_y, pos_x, "");
+    mvaddstr(++pos_y, pos_x, "[Work in progress]");
+
+    while (ch == ERR)
+        ch = getch();
 }
 
 int main()
