@@ -147,20 +147,22 @@ void read_license()
 
     move(WINDOW_Y, WINDOW_X);
     hline('#', 85);
-    vline('#', 31);
-    move(WINDOW_Y + 31, WINDOW_X);
+    vline('#', 35);
+    move(WINDOW_Y + 35, WINDOW_X);
     hline('#', 85);
     move(WINDOW_Y, WINDOW_X + 85 -1);
-    vline('#', 31);
+    vline('#', 35);
     move(pos_y , pos_x);
 
     attron(A_BOLD);
-
+    mvaddstr(++pos_y, pos_x, "                   ____ ____ ____ _ _     _ _  _ _  _ ___  ");
+    mvaddstr(++pos_y, pos_x, "                   |__| [__  |    | |     | |  | |\\/| |__] ");
+    mvaddstr(++pos_y, pos_x, "                   |  | ___] |___ | |    _| |__| |  | |    ");
+    mvaddstr(++pos_y, pos_x, "");
+    mvaddstr(++pos_y, pos_x, "");
     mvaddstr(++pos_y, pos_x, "Copyright © 2017 Anton Makhtinger, Evgeniy Mazayshvilly");
     mvaddstr(++pos_y, pos_x, "");
-    attron(A_STANDOUT);
-    mvaddstr(++pos_y, pos_x, "WARRANTY");
-    attroff(A_STANDOUT);
+    attron(A_STANDOUT); mvaddstr(++pos_y, pos_x, "WARRANTY"); attroff(A_STANDOUT);
     mvaddstr(++pos_y, pos_x, "THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY");
     mvaddstr(++pos_y, pos_x, "APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT");
     mvaddstr(++pos_y, pos_x, "HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM 'AS IS' WITHOUT WARRANTY");
@@ -171,15 +173,11 @@ void read_license()
     mvaddstr(++pos_y, pos_x, "ALL NECESSARY SERVICING, REPAIR OR CORRECTION.");
     mvaddstr(++pos_y, pos_x, "");
     mvaddstr(++pos_y, pos_x, "");
-    mvaddstr(++pos_y, pos_x, "");
-    attron(A_STANDOUT);
-    mvaddstr(++pos_y, pos_x, "CONDITIONS");
-    attroff(A_STANDOUT);
+    attron(A_STANDOUT); mvaddstr(++pos_y, pos_x, "CONDITIONS"); attroff(A_STANDOUT);
     mvaddstr(++pos_y, pos_x, "You should have received a copy of the GNU General Public License");
     mvaddstr(++pos_y, pos_x, "along with this program. If not, see");
     mvaddstr(++pos_y, pos_x, "<http://www.gnu.org/licenses/>.");
     mvaddstr(++pos_y, pos_x, "");
-
     attroff(A_BOLD);
 
     attron(A_DIM);
@@ -199,17 +197,33 @@ void read_help()
     clear();
 
     move(WINDOW_Y, WINDOW_X);
-    hline('#', 85);
-    vline('#', 27);
-    move(WINDOW_Y + 27, WINDOW_X);
-    hline('#', 85);
-    move(WINDOW_Y, WINDOW_X + 85 -1);
-    vline('#', 27);
-    move(pos_y , pos_x);
+    hline('#', 82);
+    vline('#', 24);
+    move(WINDOW_Y + 24, WINDOW_X);
+    hline('#', 82);
+    move(WINDOW_Y, WINDOW_X + 82 -1);
+    vline('#', 24);
+    move(pos_y , pos_x);                                                                                           
 
+    attron(A_BOLD);
+    mvaddstr(++pos_y, pos_x, "  _  _ ____ ____    ___ _  _ ____    ____ ____ ____ ____ _ _ _ ____");
+    mvaddstr(++pos_y, pos_x, "  |  | [__  |___     |  |__| |___    |__| |__/ |__/ |  | | | | [__ ");
+    mvaddstr(++pos_y, pos_x, "  |__| ___] |___     |  |  | |___    |  | |  \\ |  \\ |__| |_|_| ___]");
     mvaddstr(++pos_y, pos_x, "");
     mvaddstr(++pos_y, pos_x, "");
-    mvaddstr(++pos_y, pos_x, "[Work in progress]");
+    mvaddstr(++pos_y, pos_x, "");
+    mvaddstr(++pos_y, pos_x, "");
+    mvaddstr(++pos_y, pos_x, "                  .                               .      ");
+    mvaddstr(++pos_y, pos_x, "                .;;.......... ..     .. ..........;;.    ");
+    mvaddstr(++pos_y, pos_x, "              .;;;;::::::::::..       ..::::::::::;;;;.  ");
+    mvaddstr(++pos_y, pos_x, "               ':;;:::::::::: . .   . . ::::::::::;;:'   ");
+    mvaddstr(++pos_y, pos_x, "                 ':                               :'     ");
+    mvaddstr(++pos_y, pos_x, "");
+    mvaddstr(++pos_y, pos_x, "");
+    mvaddstr(++pos_y, pos_x, "");
+    attroff(A_BOLD);
+
+    mvaddstr(++pos_y, pos_x, "(press any key to continue playing)");
 
     while (ch == ERR)
         ch = getch();
