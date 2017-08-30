@@ -45,11 +45,6 @@ int get_action(player* p, int *height)
             read_help();
         else if (ch == 266) // F2
             read_license();
-        // for debug
-        else if (ch == 'w')
-            *height += 1;
-        else if (ch == 's')
-            *height -= 1;
     }
 
     player_fall(p);
@@ -131,17 +126,14 @@ bool gameover(player p, int height, platform* all_platforms)
         }
         return true;
     }
-    else
-    {
-        return false;
-    }
+   return false;
 }
 
 void read_license()
 {
     int ch = ERR;
-    int pos_y =  WINDOW_Y + 5;
-    int pos_x =  WINDOW_X + 5;
+    int y =  WINDOW_Y + 5;
+    int x =  WINDOW_X + 5;
 
     clear();
 
@@ -152,36 +144,36 @@ void read_license()
     hline('#', 85);
     move(WINDOW_Y, WINDOW_X + 85 -1);
     vline('#', 35);
-    move(pos_y , pos_x);
+    move(y , x);
 
     attron(A_BOLD);
-    mvaddstr(++pos_y, pos_x, "                   ____ ____ ____ _ _     _ _  _ _  _ ___  ");
-    mvaddstr(++pos_y, pos_x, "                   |__| [__  |    | |     | |  | |\\/| |__] ");
-    mvaddstr(++pos_y, pos_x, "                   |  | ___] |___ | |    _| |__| |  | |    ");
-    mvaddstr(++pos_y, pos_x, "");
-    mvaddstr(++pos_y, pos_x, "");
-    mvaddstr(++pos_y, pos_x, "Copyright © 2017 Anton Makhtinger, Evgeniy Mazayshvilly");
-    mvaddstr(++pos_y, pos_x, "");
-    attron(A_STANDOUT); mvaddstr(++pos_y, pos_x, "WARRANTY"); attroff(A_STANDOUT);
-    mvaddstr(++pos_y, pos_x, "THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY");
-    mvaddstr(++pos_y, pos_x, "APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT");
-    mvaddstr(++pos_y, pos_x, "HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM 'AS IS' WITHOUT WARRANTY");
-    mvaddstr(++pos_y, pos_x, "OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO,");
-    mvaddstr(++pos_y, pos_x, "THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR");
-    mvaddstr(++pos_y, pos_x, "PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM");
-    mvaddstr(++pos_y, pos_x, "IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF");
-    mvaddstr(++pos_y, pos_x, "ALL NECESSARY SERVICING, REPAIR OR CORRECTION.");
-    mvaddstr(++pos_y, pos_x, "");
-    mvaddstr(++pos_y, pos_x, "");
-    attron(A_STANDOUT); mvaddstr(++pos_y, pos_x, "CONDITIONS"); attroff(A_STANDOUT);
-    mvaddstr(++pos_y, pos_x, "You should have received a copy of the GNU General Public License");
-    mvaddstr(++pos_y, pos_x, "along with this program. If not, see");
-    mvaddstr(++pos_y, pos_x, "<http://www.gnu.org/licenses/>.");
-    mvaddstr(++pos_y, pos_x, "");
+    mvaddstr(++y, x, "                   ____ ____ ____ _ _     _ _  _ _  _ ___  ");
+    mvaddstr(++y, x, "                   |__| [__  |    | |     | |  | |\\/| |__] ");
+    mvaddstr(++y, x, "                   |  | ___] |___ | |    _| |__| |  | |    ");
+    mvaddstr(++y, x, "");
+    mvaddstr(++y, x, "");
+    mvaddstr(++y, x, "Copyright © 2017 Anton Makhtinger, Evgeniy Mazayshvilly");
+    mvaddstr(++y, x, "");
+    attron(A_STANDOUT); mvaddstr(++y, x, "WARRANTY"); attroff(A_STANDOUT);
+    mvaddstr(++y, x, "THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY");
+    mvaddstr(++y, x, "APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT");
+    mvaddstr(++y, x, "HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM 'AS IS' WITHOUT WARRANTY");
+    mvaddstr(++y, x, "OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO,");
+    mvaddstr(++y, x, "THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR");
+    mvaddstr(++y, x, "PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM");
+    mvaddstr(++y, x, "IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF");
+    mvaddstr(++y, x, "ALL NECESSARY SERVICING, REPAIR OR CORRECTION.");
+    mvaddstr(++y, x, "");
+    mvaddstr(++y, x, "");
+    attron(A_STANDOUT); mvaddstr(++y, x, "CONDITIONS"); attroff(A_STANDOUT);
+    mvaddstr(++y, x, "You should have received a copy of the GNU General Public License");
+    mvaddstr(++y, x, "along with this program. If not, see");
+    mvaddstr(++y, x, "<http://www.gnu.org/licenses/>.");
+    mvaddstr(++y, x, "");
     attroff(A_BOLD);
 
     attron(A_DIM);
-    mvaddstr(++pos_y, pos_x, "(press any key to continue playing)");
+    mvaddstr(++y, x, "(press any key to continue playing)");
     attroff(A_DIM);
 
     while (ch == ERR)
@@ -191,8 +183,8 @@ void read_license()
 void read_help()
 {
     int ch = ERR;
-    int pos_y =  WINDOW_Y + 5;
-    int pos_x =  WINDOW_X + 5;
+    int y =  WINDOW_Y + 5;
+    int x =  WINDOW_X + 5;
 
     clear();
 
@@ -203,27 +195,27 @@ void read_help()
     hline('#', 82);
     move(WINDOW_Y, WINDOW_X + 82 -1);
     vline('#', 24);
-    move(pos_y , pos_x);                                                                                           
+    move(y , x);                                                                                           
 
     attron(A_BOLD);
-    mvaddstr(++pos_y, pos_x, "  _  _ ____ ____    ___ _  _ ____    ____ ____ ____ ____ _ _ _ ____");
-    mvaddstr(++pos_y, pos_x, "  |  | [__  |___     |  |__| |___    |__| |__/ |__/ |  | | | | [__ ");
-    mvaddstr(++pos_y, pos_x, "  |__| ___] |___     |  |  | |___    |  | |  \\ |  \\ |__| |_|_| ___]");
-    mvaddstr(++pos_y, pos_x, "");
-    mvaddstr(++pos_y, pos_x, "");
-    mvaddstr(++pos_y, pos_x, "");
-    mvaddstr(++pos_y, pos_x, "");
-    mvaddstr(++pos_y, pos_x, "                  .                               .      ");
-    mvaddstr(++pos_y, pos_x, "                .;;.......... ..     .. ..........;;.    ");
-    mvaddstr(++pos_y, pos_x, "              .;;;;::::::::::..       ..::::::::::;;;;.  ");
-    mvaddstr(++pos_y, pos_x, "               ':;;:::::::::: . .   . . ::::::::::;;:'   ");
-    mvaddstr(++pos_y, pos_x, "                 ':                               :'     ");
-    mvaddstr(++pos_y, pos_x, "");
-    mvaddstr(++pos_y, pos_x, "");
-    mvaddstr(++pos_y, pos_x, "");
+    mvaddstr(++y, x, "  _  _ ____ ____    ___ _  _ ____    ____ ____ ____ ____ _ _ _ ____");
+    mvaddstr(++y, x, "  |  | [__  |___     |  |__| |___    |__| |__/ |__/ |  | | | | [__ ");
+    mvaddstr(++y, x, "  |__| ___] |___     |  |  | |___    |  | |  \\ |  \\ |__| |_|_| ___]");
+    mvaddstr(++y, x, "");
+    mvaddstr(++y, x, "");
+    mvaddstr(++y, x, "");
+    mvaddstr(++y, x, "");
+    mvaddstr(++y, x, "                  .                               .      ");
+    mvaddstr(++y, x, "                .;;.......... ..     .. ..........;;.    ");
+    mvaddstr(++y, x, "              .;;;;::::::::::..       ..::::::::::;;;;.  ");
+    mvaddstr(++y, x, "               ':;;:::::::::: . .   . . ::::::::::;;:'   ");
+    mvaddstr(++y, x, "                 ':                               :'     ");
+    mvaddstr(++y, x, "");
+    mvaddstr(++y, x, "");
+    mvaddstr(++y, x, "");
     attroff(A_BOLD);
 
-    mvaddstr(++pos_y, pos_x, "(press any key to continue playing)");
+    mvaddstr(++y, x, "(press any key to continue playing)");
 
     while (ch == ERR)
         ch = getch();

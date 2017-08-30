@@ -28,8 +28,6 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 void render_all(platform* all_platforms, player* p, int height)
 {
-    int camera_h = height;
-
     clear();
     render_window(WINDOW_X, WINDOW_Y, WINDOW_WIDTH, WINDOW_HEIGHT);
     // Reserved for far future
@@ -37,12 +35,12 @@ void render_all(platform* all_platforms, player* p, int height)
 
     for (int i = 0; i < PLATFORM_COUNT; ++i)
     {
-        render_platform(all_platforms[i], camera_h, height, WINDOW_X, WINDOW_Y);
-        // render_platform(all_platforms[i], camera_h, height, 80, WINDOW_Y);
+        render_platform(all_platforms[i], height, WINDOW_X, WINDOW_Y);
+        // render_platform(all_platforms[i], height, 80, WINDOW_Y);
     }
 
-    render_player(*p, camera_h, WINDOW_X, WINDOW_Y);
-    // render_player(*p, camera_h, 80, WINDOW_Y);
+    render_player(*p, height, WINDOW_X, WINDOW_Y);
+    // render_player(*p, height, 80, WINDOW_Y);
 
     // Prints the height debug thingie
     attron(A_STANDOUT);
@@ -89,13 +87,13 @@ void render_window(int x, int y, int x_len, int y_len)
 }
 
 // Draws one given platform
-void render_platform(platform p, int camera_h, int height, int x, int y)
+void render_platform(platform p, int height, int x, int y)
 {
     attron(A_BOLD);
 
-    move(plnkh(p) + y + camera_h, plnkls(p) + x);
+    move(plnkh(p) + y + height, plnkls(p) + x);
 
-    if (plnkh(p) + camera_h < WINDOW_HEIGHT)
+    if (plnkh(p) + height < WINDOW_HEIGHT)
     {
         addch('<');
 
@@ -109,14 +107,14 @@ void render_platform(platform p, int camera_h, int height, int x, int y)
 }
 
 // Draws one given player
-void render_player(player p, int camera_h, int x, int y)
+void render_player(player p, int height, int x, int y)
 {
-    move(plyrth(p) + y + camera_h, plyrls(p) + x);
+    move(plyrth(p) + y + height, plyrls(p) + x);
     printw(PLAYER1);
-    move(plyrth(p) + 1 + y + camera_h, plyrls(p) + x);
+    move(plyrth(p) + 1 + y + height, plyrls(p) + x);
     printw(PLAYER2);
-    move(plyrth(p) + 2 + y + camera_h, plyrls(p) + x);
+    move(plyrth(p) + 2 + y + height, plyrls(p) + x);
     printw(PLAYER3);
-    move(plyrth(p) + 3 + y + camera_h, plyrls(p) + x);
+    move(plyrth(p) + 3 + y + height, plyrls(p) + x);
     printw(PLAYER4);
 }

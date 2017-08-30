@@ -10,7 +10,7 @@
 
 void render_all(platform* all_platforms, player* p, int height);
 void render_window(int x, int y, int x_len, int y_len);
-void render_platform(platform p, int camera_h, int height, int x, int y);
-void render_player(player p, int camera_h, int x, int y);
+void render_platform(platform p, int height, int x, int y);
+void render_player(player p, int height, int x, int y);
 
 #endif
